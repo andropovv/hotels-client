@@ -1,5 +1,18 @@
+import { useRoutes } from "react-router-dom";
+import Footer from "./components/common/Footer";
+import Navbar from "./components/common/Navbar";
+import { routesList } from "./routes";
+
 function App() {
-  return <div className="App"></div>;
+  const routes = useRoutes(routesList);
+
+  return (
+    <>
+      <Navbar />
+      {routes}
+      <Footer />
+    </>
+  );
 }
 
 export default App;
