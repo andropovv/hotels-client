@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .window {
+    height: 60%;
+    width: 60%;
+
+    .imagesContainer {
+      display: flex;
+      overflow: hidden;
+
+      .item {
+        min-width: 100%;
+        max-width: 100%;
+        border-radius: 4px;
+        transition: 0.3s;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

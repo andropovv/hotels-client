@@ -1,0 +1,19 @@
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.closeIcon {
+  font-size: 3rem;
+  line-height: 1;
+  color: #797979;
+}

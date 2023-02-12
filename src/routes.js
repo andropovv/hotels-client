@@ -29,12 +29,12 @@ export const routesList = [
     element: <ProtectedRouteForLoggined component={MyBookingsPage} />,
   },
   {
-    path: "rooms",
+    path: "roomTypes",
     element: <Outlet />,
     children: [
       { index: true, element: <RoomsPage /> },
       {
-        path: ":roomId",
+        path: ":roomTypeId",
         element: <Outlet />,
         children: [
           { path: "booking", element: <BookingRoomPage /> },
