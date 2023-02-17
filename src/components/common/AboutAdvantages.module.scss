@@ -1,0 +1,39 @@
+.advantages {
+  width: 1284px;
+  margin: 0 auto;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 37px;
+  text-align: center;
+  letter-spacing: 0.005em;
+  margin-bottom: 70px;
+}
+
+.itemsContainer {
+  margin-bottom: 200px;
+  display: flex;
+  justify-content: space-between;
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 150px;
+    width: 280px;
+
+    div {
+      height: 100px;
+      p {
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 34px;
+        text-align: center;
+        letter-spacing: 0.005em;
+      }
+    }
+  }
+}

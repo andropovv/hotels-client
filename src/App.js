@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useRoutes } from "react-router-dom";
 import Footer from "./components/common/Footer";
 import Navbar from "./components/common/Navbar";
+import NavbarAbout from "./components/common/Navbar/NavbarAbout";
 import { routesList } from "./routes";
 import { getRoomTypes } from "./store/slices/roomTypes";
 
@@ -16,7 +17,6 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
       <div className="content">{routes}</div>
       <Footer />
     </div>

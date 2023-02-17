@@ -1,0 +1,50 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 460px;
+  background-color: #fff;
+  color: #000000;
+  font-size: 16px;
+  flex: 0 0 auto;
+
+  .contentBlock {
+    display: flex;
+    width: 1184px;
+    height: 184px;
+  }
+
+  table {
+    border-spacing: 40px 30px;
+
+    thead {
+      tr {
+        font-weight: 600;
+      }
+    }
+  }
+
+  th {
+    text-align: left;
+  }
+
+  .social {
+    margin-left: 46px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+    .rigths {
+      p {
+        margin: 2px 0;
+      }
+    }
+
+    .networkImgs {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+  }
+}

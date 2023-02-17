@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Navbar.module.scss";
+import styles from "./NavbarAbout.module.scss";
 import navCover from "../../../assets/img/navbar-cover.png";
 import { publicNavigation } from "./navButtons";
 import { NavLink } from "react-router-dom";
@@ -10,7 +10,8 @@ import {
   getIsLoggedIn,
   logOut,
 } from "../../../store/slices/auth";
-const Navbar = () => {
+
+const NavbarAbout = () => {
   const isLogin = useSelector(getIsLoggedIn());
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading());
@@ -18,6 +19,7 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(logOut());
   };
+
   return (
     <div className={styles.navbarAbout}>
       <img src={navCover} alt="" />
@@ -49,4 +51,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarAbout;

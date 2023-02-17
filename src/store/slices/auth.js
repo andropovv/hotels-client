@@ -1,23 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
-import httpService from "../../services/http.service";
+import authService from "../../services/auth.service";
+import localStorageService from "../../services/localStorage.service";
+
+const initialState = localStorageService.getAccessToken()
+  ? {
+      currentUser: null,
+      isLoading: false,
+      error: null,
+      auth: { userId: localStorageService.getUserId() },
+      isLoggedIn: true,
+    }
+  : {
+      currentUser: null,
+      isLoading: false,
+      error: null,
+      auth: null,
+      isLoggedIn: false,
+    };
 
 const authorizationSlice = createSlice({
   name: "auth",
-  initialState: {
-    currentUser: null,
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
     logout: (state) => {
       state.currentUser = null;
+      state.isLoggedIn = false;
+      state.auth = null;
+      state.dataLoaded = false;
+      state.isLoading = false;
     },
     fetchCurrentUserPending: (state) => {
       state.isLoading = true;
     },
     fetchCurrentUserSuccess: (state, action) => {
       state.isLoading = false;
-      state.currentUser = action.payload;
+      state.auth = action.payload.userId;
+      state.isLoggedIn = true;
     },
     fetchCurrentUserFailure: (state, action) => {
       state.isLoading = false;
@@ -33,13 +51,11 @@ const {
   fetchCurrentUserFailure,
 } = authorizationSlice.actions;
 
-export { logout };
-
 export const signIn = (payload) => async (dispatch) => {
   try {
     dispatch(fetchCurrentUserPending());
-    const { data } = await httpService.post("auth/signInWithPassword", payload);
-    localStorage.setItem("access_token", data.accessToken);
+    const data = await authService.login(payload);
+    localStorageService.setTokens(data);
     dispatch(fetchCurrentUserSuccess(data));
   } catch (error) {
     dispatch(fetchCurrentUserFailure(error));
@@ -49,16 +65,20 @@ export const signIn = (payload) => async (dispatch) => {
 export const signUp = (payload) => async (dispatch) => {
   try {
     dispatch(fetchCurrentUserPending());
-    const { data } = await httpService.post("auth/signUp", payload);
-    localStorage.setItem("access_token", data.accessToken);
+    const data = await authService.register(payload);
+    localStorageService.setTokens(data);
     dispatch(fetchCurrentUserSuccess(data));
   } catch (error) {
     dispatch(fetchCurrentUserFailure(error));
   }
 };
 
-export const selectIsAuth = (state) => Boolean(state.auth.currentUser);
+export const logOut = () => (dispatch) => {
+  localStorageService.removeAuthData();
+  dispatch(logout());
+};
+
+export const getIsLoggedIn = () => (state) => state.auth.isLoggedIn;
+export const getIsLoading = () => (state) => state.auth.isLoading;
 
 export default authorizationSlice.reducer;
-
-// TODO: после релоада авторизация очищается

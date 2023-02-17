@@ -4,8 +4,23 @@ import { NavLink, useNavigate } from "react-router-dom";
 import TextField from "../../components/UI/Fields/TextField";
 import * as yup from "yup";
 import { signIn } from "../../store/slices/auth";
-import styles from "./LoginPage.module.css";
+import styles from "./LoginPage.module.scss";
 import BlueButton from "../../components/UI/Buttons/BlueButton";
+import Navbar from "../../components/common/Navbar";
+
+import googleIcon from "../../assets/svg/forLogin/google.svg";
+import odnoklassnikiIcon from "../../assets/svg/forLogin/odnoklassniki.svg";
+import telegramIcon from "../../assets/svg/forLogin/telegram.svg";
+import vkIcon from "../../assets/svg/forLogin/vk.svg";
+import yandexIcon from "../../assets/svg/forLogin/yandex.svg";
+
+const iconsSocial = [
+  googleIcon,
+  odnoklassnikiIcon,
+  telegramIcon,
+  vkIcon,
+  yandexIcon,
+];
 
 const LoginPage = () => {
   const [loginData, setLoginData] = useState({
@@ -18,14 +33,14 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const validateScheme = yup.object().shape({
-    email: yup
-      .string()
-      .required("Поле электронной почты обязательно для заполнения")
-      .email("Email введен некорректно"),
     password: yup
       .string()
       .required("Обязательно введите пароль")
       .min(8, "Пароль должен состоять минимум из 8 символов"),
+    email: yup
+      .string()
+      .required("Поле электронной почты обязательно для заполнения")
+      .email("Email введен некорректно"),
   });
 
   const validate = () => {
@@ -60,34 +75,53 @@ const LoginPage = () => {
 
   return (
     <>
+      <Navbar />
       {isLoading ? (
         <p>loading...</p>
       ) : (
         <div className={styles.container}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h1 className={styles.header}>Login</h1>
+            <div className={styles.header}>
+              <h1>Вход</h1>
+            </div>
+
             <TextField
               onChange={handleChange}
               value={loginData.email}
-              label="Email"
               name="email"
+              placeholder="Введите элекронную почту"
               error={errors.email}
             />
+
             <TextField
               onChange={handleChange}
               value={loginData.password}
-              label="Password"
+              // label="Password"
               name="password"
               error={errors.password}
+              placeholder="Введите пароль"
             />
 
-            <BlueButton type="submit" disabled={!isValid}>
-              Войти
-            </BlueButton>
-            <NavLink to="../register">Зарегистрироваться</NavLink>
+            <div className={styles.entrance}>
+              <BlueButton type="submit" disabled={!isValid}>
+                Войти
+              </BlueButton>
+              <NavLink>Забыли пароль?</NavLink>
+            </div>
+            <div className={styles.other}>
+              <div>
+                <p>Или войдите с помощью</p>
+                <div className={styles.icons}>
+                  {iconsSocial.map((icon) => (
+                    <img src={icon} alt="" />
+                  ))}
+                </div>
+              </div>
+              <NavLink to="../register">Зарегистрироваться</NavLink>
+            </div>
           </form>
         </div>
-      ) }
+      )}
     </>
   );
 };

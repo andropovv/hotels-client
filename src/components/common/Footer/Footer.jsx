@@ -1,10 +1,15 @@
 import React from "react";
-import "./Footer.css";
+import styles from "./Footer.module.scss";
+import FooterSocial from "./FooterSocial";
+import FooterTable from "./FooterTable";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <p>Copyright &copy; 2023 MyCompany</p>
+    <div className={styles.footer}>
+      <div className={styles.contentBlock}>
+        <FooterTable />
+        <FooterSocial />
+      </div>
     </div>
   );
 };

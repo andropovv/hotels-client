@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Navbar from "../../components/common/Navbar";
 import BlueButton from "../../components/UI/Buttons/BlueButton";
-import Carousel from "../../components/UI/Carousel/Carousel";
+import Carousel from "../../components/UI/PictureCarousel/Carousel";
 import { getRoomTypeById } from "../../store/slices/roomTypes";
 
 const BookingRoomPage = () => {
@@ -11,6 +12,7 @@ const BookingRoomPage = () => {
   const roomType = useSelector(getRoomTypeById(roomTypeId));
   return (
     <>
+      <Navbar />
       {roomType?.name && (
         <>
           <div
@@ -33,7 +35,7 @@ const BookingRoomPage = () => {
                 ))}
               </div>
               <div>
-                <p>Цена: {roomType.price}</p>
+                <p>Цена: ${roomType.price}</p>
                 <BlueButton>Забронировать</BlueButton>
               </div>
             </div>

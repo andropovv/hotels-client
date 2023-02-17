@@ -1,22 +1,24 @@
 .blueButton {
-  background-color: blue;
-  padding: 5px 20px;
+  background-color: #255e8b;
+  padding: 10px 40px;
   cursor: pointer;
-  color: aliceblue;
-  font-size: 16px;
+  color: white;
+  font-size: 20px;
   letter-spacing: 1.3px;
-  border: 1px solid blue;
-  border-radius: 4px;
+  border: 1px solid #255e8b;
+  border-radius: 10px;
 }
 
 .blueButton:active {
   border: aliceblue;
 }
 .blueButton:hover {
-  background-color: rgb(44, 135, 255);
+  background-color: #276391;
+  opacity: 0.9;
 }
 .blueButton:disabled {
-  background-color: gray;
+  background-color: #276391;
+  opacity: 0.9;
   border: none;
   cursor: default;
 }

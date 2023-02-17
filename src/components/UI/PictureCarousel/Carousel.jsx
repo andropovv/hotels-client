@@ -39,7 +39,7 @@ const Carousel = ({ items }) => {
       <div className={styles.window}>
         <div className={styles.imagesContainer} ref={imagesRef}>
           {items.map((item, i) => (
-            <CarouselItem item={item} />
+            <CarouselItem key={i} item={item} />
           ))}
         </div>
       </div>

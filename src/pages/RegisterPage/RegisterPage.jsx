@@ -7,6 +7,7 @@ import { signUp } from "../../store/slices/auth";
 import styles from "./RegisterPage.module.css";
 import * as yup from "yup";
 import BlueButton from "../../components/UI/Buttons/BlueButton";
+import Navbar from "../../components/common/Navbar";
 
 const RegisterPage = () => {
   const [registerData, setRegisterData] = useState({
@@ -49,7 +50,6 @@ const RegisterPage = () => {
   const handleChange = (data) => {
     setRegisterData({ ...registerData, ...data });
   };
-  console.log(errors);
 
   const handleSubmit = async (e) => {
     try {
@@ -66,6 +66,7 @@ const RegisterPage = () => {
 
   return (
     <>
+      <Navbar />
       {isLoading ? (
         <p>loading...</p>
       ) : (

@@ -1,0 +1,30 @@
+.container {
+  margin-bottom: 30px;
+
+  input {
+    width: 624px;
+    height: 72px;
+    border: 1px #255e8b solid;
+    border-radius: 20px;
+    font-size: 28px;
+    display: block;
+
+    &::placeholder {
+      color: #c7c7c7;
+    }
+
+    &:hover {
+      border-color: #255e8b;
+    }
+  }
+
+  label {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin: 5px;
+  }
+}

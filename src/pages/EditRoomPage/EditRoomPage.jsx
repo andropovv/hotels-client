@@ -1,7 +1,12 @@
 import React from "react";
+import Navbar from "../../components/common/Navbar";
 
 const EditRoomPage = () => {
-  return <div>EditRoomPage</div>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 };
 
 export default EditRoomPage;
