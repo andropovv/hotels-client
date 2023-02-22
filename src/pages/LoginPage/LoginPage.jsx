@@ -13,6 +13,7 @@ import odnoklassnikiIcon from "../../assets/svg/forLogin/odnoklassniki.svg";
 import telegramIcon from "../../assets/svg/forLogin/telegram.svg";
 import vkIcon from "../../assets/svg/forLogin/vk.svg";
 import yandexIcon from "../../assets/svg/forLogin/yandex.svg";
+import Loader from "../../components/UI/Loader/Loader";
 
 const iconsSocial = [
   googleIcon,
@@ -77,7 +78,7 @@ const LoginPage = () => {
     <>
       <Navbar />
       {isLoading ? (
-        <p>loading...</p>
+        <Loader />
       ) : (
         <div className={styles.container}>
           <form className={styles.form} onSubmit={handleSubmit}>
@@ -101,7 +102,6 @@ const LoginPage = () => {
               error={errors.password}
               placeholder="Введите пароль"
             />
-
             <div className={styles.entrance}>
               <BlueButton type="submit" disabled={!isValid}>
                 Войти
@@ -112,12 +112,12 @@ const LoginPage = () => {
               <div>
                 <p>Или войдите с помощью</p>
                 <div className={styles.icons}>
-                  {iconsSocial.map((icon) => (
-                    <img src={icon} alt="" />
+                  {iconsSocial.map((icon, i) => (
+                    <img key={i} src={icon} alt="" />
                   ))}
                 </div>
               </div>
-              <NavLink to="../register">Зарегистрироваться</NavLink>
+              <NavLink to="../register">Регистрация</NavLink>
             </div>
           </form>
         </div>

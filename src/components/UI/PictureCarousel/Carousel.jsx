@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import styles from "./Carousel.module.scss";
 import CarouselItem from "./CarouselItem";
+import rigthChevron from "../../../assets/svg/rightChevron.svg";
+import leftChevron from "../../../assets/svg/leftChevron.svg";
 
 const Carousel = ({ items }) => {
   const imagesRef = useRef();
@@ -35,7 +37,6 @@ const Carousel = ({ items }) => {
 
   return (
     <div className={styles.container}>
-      <button onClick={handleMoveLeft}>лево</button>
       <div className={styles.window}>
         <div className={styles.imagesContainer} ref={imagesRef}>
           {items.map((item, i) => (
@@ -43,7 +44,18 @@ const Carousel = ({ items }) => {
           ))}
         </div>
       </div>
-      <button onClick={handleMoveRight}>право</button>
+      <img
+        src={leftChevron}
+        alt=""
+        onClick={handleMoveLeft}
+        className={styles.moveLeft}
+      />
+      <img
+        src={rigthChevron}
+        alt=""
+        onClick={handleMoveRight}
+        className={styles.moveRight}
+      />
     </div>
   );
 };

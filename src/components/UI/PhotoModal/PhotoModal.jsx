@@ -7,7 +7,7 @@ const PhotoModal = ({ photoUrl, onClose }) => {
     <div className="photo-modal">
       <div className="photo-modal__overlay" onClick={onClose} />
       <div className="photo-modal__content">
-        <img src={photoUrl} alt="Photo" />
+        <img src={photoUrl} alt="" />
         <CloseButton className="photo-modal__close-button" onClick={onClose}>
           Закрыть
         </CloseButton>

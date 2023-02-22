@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
 
   &__overlay {
     position: absolute;
@@ -21,14 +22,17 @@
 
   &__content {
     position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    overflow: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     padding: 16px;
     text-align: center;
+    z-index: 2;
+
+    overflow: hidden;
 
     img {
       max-width: 100%;

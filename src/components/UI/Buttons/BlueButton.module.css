@@ -9,9 +9,6 @@
   border-radius: 10px;
 }
 
-.blueButton:active {
-  border: aliceblue;
-}
 .blueButton:hover {
   background-color: #276391;
   opacity: 0.9;

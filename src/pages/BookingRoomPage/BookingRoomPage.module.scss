@@ -1,0 +1,54 @@
+.container {
+  width: 1284px;
+  margin: 0 auto;
+  margin-top: 80px;
+
+  .properties {
+    color: #565656;
+    font-size: 30px;
+    display: flex;
+    gap: 38px;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 30px;
+  }
+
+  .main {
+    display: flex;
+    .photos {
+      flex: 0 0 auto;
+      width: 698px;
+      height: 460px;
+    }
+    .rightSide {
+      font-size: 30px;
+      display: flex;
+      flex-direction: column;
+      padding-left: 40px;
+      .price {
+        font-weight: 500;
+      }
+
+      .description {
+        font-size: 26px;
+      }
+
+      .btn {
+        align-self: center;
+        width: 350px;
+        height: 63px;
+        font-size: 30px;
+      }
+      .bookedBtn {
+        align-self: center;
+        width: 350px;
+        height: 63px;
+        font-size: 30px;
+        background: #fffefe;
+        color: #000000;
+      }
+    }
+  }
+}

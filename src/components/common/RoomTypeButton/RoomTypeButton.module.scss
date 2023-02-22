@@ -1,0 +1,60 @@
+.container {
+  width: 317px;
+  height: 35px;
+  margin: 0;
+  position: relative;
+  .btn {
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 5px 40px;
+    border: none;
+    font-weight: 500;
+    font-size: 28px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .btnActive {
+    border: #255e8b solid 1px;
+  }
+
+  .dropDown {
+    opacity: 0;
+    width: 295px;
+    height: 295px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    position: absolute;
+    bottom: -320px;
+    left: -12000px;
+    border: 2px solid #255e8b;
+    transition: opacity ease-in 0.1s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .submitBtn {
+      background: #255e8b;
+      border-radius: 4px;
+      margin: 6px 0;
+      padding: 4px 10px;
+      border: none;
+      font-size: 22px;
+      color: #ffffff;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  .dropDownActive {
+    opacity: 1;
+    left: 0;
+  }
+}

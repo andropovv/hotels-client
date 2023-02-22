@@ -41,6 +41,13 @@ export const getRoomTypeById = (roomTypeId) => (state) => {
   }
 };
 
+export const getRoomTypeByName = (name) => (state) => {
+  if (state.roomTypes.items) {
+    return state.roomTypes.items.find((rType) => rType.name === name);
+  }
+};
+
 export const selectIsRoomTypes = (state) => Boolean(state.roomTypes.items);
+export const getIsRoomTypesLoading = () => (state) => state.roomTypes.isLoading;
 
 export default roomTypesSlice.reducer;

@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import RadioField from "../../components/UI/Fields/RadioField";
 import TextField from "../../components/UI/Fields/TextField";
 import { signUp } from "../../store/slices/auth";
-import styles from "./RegisterPage.module.css";
+import styles from "./RegisterPage.module.scss";
 import * as yup from "yup";
 import BlueButton from "../../components/UI/Buttons/BlueButton";
 import Navbar from "../../components/common/Navbar";
@@ -22,16 +22,16 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const validateScheme = yup.object().shape({
-    name: yup.string().required("Введите имя"),
-    email: yup
-      .string()
-      .required("Поле электронной почты обязательно для заполнения")
-      .email("Email введен некорректно"),
+    sex: yup.string().required("Выберите пол"),
     password: yup
       .string()
       .required("Обязательно введите пароль")
       .min(8, "Пароль должен состоять минимум из 8 символов"),
-    sex: yup.string().required("Выберите пол"),
+    email: yup
+      .string()
+      .required("Поле электронной почты обязательно для заполнения")
+      .email("Email введен некорректно"),
+    name: yup.string().required("Введите имя"),
   });
 
   const validate = () => {
@@ -72,44 +72,48 @@ const RegisterPage = () => {
       ) : (
         <div className={styles.container}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h1 className={styles.header}>Login</h1>
+            <h1 className={styles.header}>Регистрация</h1>
             <TextField
               onChange={handleChange}
               value={registerData.name}
-              label="Name"
               name="name"
               error={errors.name}
+              placeholder="Введите имя"
             />
             <TextField
               onChange={handleChange}
               value={registerData.email}
-              label="Email"
               name="email"
               error={errors.email}
+              placeholder="Введите электронную почту"
             />
             <TextField
               onChange={handleChange}
               value={registerData.password}
-              label="Password"
               name="password"
               error={errors.password}
+              placeholder="Введите пароль"
             />
-            <RadioField
-              options={[
-                { name: "Мужской", value: "male" },
-                { name: "Женский", value: "female" },
-              ]}
-              label="Пол"
-              value={registerData.sex}
-              name="sex"
-              error={errors.sex}
-              onChange={handleChange}
-            />
+            <div>
+              <RadioField
+                options={[
+                  { name: "Мужской", value: "male" },
+                  { name: "Женский", value: "female" },
+                ]}
+                label="Укажите свой пол"
+                value={registerData.sex}
+                name="sex"
+                error={errors.sex}
+                onChange={handleChange}
+              />
+            </div>
 
             <BlueButton type="submit" disabled={!isValid}>
               Зарегистрироваться
             </BlueButton>
-            <NavLink to="../login">Уже есть аккаунт? Войти</NavLink>
+            <div>
+              <NavLink to="../login">Уже есть аккаунт? Войти</NavLink>
+            </div>
           </form>
         </div>
       )}

@@ -1,0 +1,15 @@
+.container {
+  width: 1284px;
+  margin: 0 auto;
+  margin-top: 80px;
+
+  .header {
+    font-weight: 500;
+    font-size: 30px;
+  }
+  .roomsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

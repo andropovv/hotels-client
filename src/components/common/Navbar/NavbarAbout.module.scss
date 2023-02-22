@@ -74,6 +74,17 @@
             color: rgb(255, 255, 255, 0.7);
           }
         }
+
+        .linkActive {
+          background-color: rgb(221, 221, 221, 0.1);
+          border-radius: 4px;
+          padding: 6px;
+        }
+        .btnActive {
+          background-color: white;
+          color: #255e8b;
+          border-color: #255e8b;
+        }
       }
     }
   }

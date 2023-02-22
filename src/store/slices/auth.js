@@ -7,14 +7,14 @@ const initialState = localStorageService.getAccessToken()
       currentUser: null,
       isLoading: false,
       error: null,
-      auth: { userId: localStorageService.getUserId() },
+      userId: localStorageService.getUserId(),
       isLoggedIn: true,
     }
   : {
       currentUser: null,
       isLoading: false,
       error: null,
-      auth: null,
+      userId: null,
       isLoggedIn: false,
     };
 
@@ -25,7 +25,7 @@ const authorizationSlice = createSlice({
     logout: (state) => {
       state.currentUser = null;
       state.isLoggedIn = false;
-      state.auth = null;
+      state.userId = null;
       state.dataLoaded = false;
       state.isLoading = false;
     },
@@ -34,8 +34,12 @@ const authorizationSlice = createSlice({
     },
     fetchCurrentUserSuccess: (state, action) => {
       state.isLoading = false;
-      state.auth = action.payload.userId;
+      state.userId = action.payload.userId;
       state.isLoggedIn = true;
+    },
+    fetchMeSuccess: (state, action) => {
+      state.isLoading = false;
+      state.currentUser = action.payload;
     },
     fetchCurrentUserFailure: (state, action) => {
       state.isLoading = false;
@@ -49,6 +53,7 @@ const {
   fetchCurrentUserPending,
   fetchCurrentUserSuccess,
   fetchCurrentUserFailure,
+  fetchMeSuccess,
 } = authorizationSlice.actions;
 
 export const signIn = (payload) => async (dispatch) => {
@@ -78,7 +83,28 @@ export const logOut = () => (dispatch) => {
   dispatch(logout());
 };
 
+export const getMe = () => async (dispatch) => {
+  try {
+    dispatch(fetchCurrentUserPending());
+    const data = await authService.getMe();
+    dispatch(fetchMeSuccess(data));
+  } catch (error) {
+    dispatch(fetchCurrentUserFailure(error));
+  }
+};
+
+export const updateUser = (payload) => async (dispatch) => {
+  try {
+    dispatch(fetchCurrentUserPending());
+    const data = await authService.updateMe(payload);
+    dispatch(fetchMeSuccess(data));
+  } catch (error) {
+    dispatch(fetchCurrentUserFailure(error));
+  }
+};
+
 export const getIsLoggedIn = () => (state) => state.auth.isLoggedIn;
 export const getIsLoading = () => (state) => state.auth.isLoading;
+export const getUser = () => (state) => state.auth?.currentUser;
 
 export default authorizationSlice.reducer;

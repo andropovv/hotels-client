@@ -1,12 +1,14 @@
 import React from "react";
-const RadioField = ({ options, name, onChange, value, label }) => {
+import styles from "./RadioField.module.scss";
+
+const RadioField = ({ options, name, onChange, value, label, error }) => {
   const handleChange = ({ target }) => {
     onChange({ [target.name]: target.value });
   };
   return (
-    <div>
+    <div className={styles.container}>
       <label>{label}</label>
-      <div>
+      <div className={styles.items}>
         {options.map((option) => (
           <div key={option.name + "_" + option.value}>
             <input
@@ -22,6 +24,7 @@ const RadioField = ({ options, name, onChange, value, label }) => {
             </label>
           </div>
         ))}
+        {error && <p className={styles.error}>{error}</p>}
       </div>
     </div>
   );

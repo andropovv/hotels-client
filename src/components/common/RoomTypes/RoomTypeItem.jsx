@@ -1,30 +1,33 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./RoomTypeItem.module.scss";
 
-const RoomTypeItem = ({ name, description, photos, price, _id }) => {
+const RoomTypeItem = ({
+  name,
+  description,
+  photos,
+  price,
+  _id,
+  rooms,
+  places,
+  square,
+}) => {
   return (
-    <div
-      style={{
-        width: "80vw",
-        backgroundColor: "aliceblue",
-        display: "flex",
-        marginBottom: "6px",
-      }}
-    >
-      <div style={{ width: "200px", height: "200px" }}>
-        <img
-          src={photos[0]}
-          alt=""
-          style={{ width: "200px", height: "200px", overflow: "hidden" }}
-        />
+    <NavLink to={_id} className={styles.container}>
+      <div className={styles.image}>
+        <img src={photos[0]} alt="" />
       </div>
-      <div>
-        <h3 style={{ marginBottom: "6px" }}>{name}</h3>
-        <p>{description[0].split(".")[0] + "..."}</p>
-        <p style={{ marginTop: "10px" }}>Цена: ${price}</p>
-        <NavLink to={`${_id}`}>Подробнее...</NavLink>
+      <div className={styles.about}>
+        <div className={styles.title}>{name}</div>
+        <div className={styles.properties}>
+          <div>{places} Гостя</div>
+          <div>{rooms} Комнат</div>
+          <div>{square} кв. м</div>
+        </div>
+        <div className={styles.description}>{description[0]}</div>
+        <div className={styles.price}>Цена: ${price}</div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 

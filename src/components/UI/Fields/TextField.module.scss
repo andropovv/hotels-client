@@ -1,5 +1,6 @@
 .container {
   margin-bottom: 30px;
+  min-height: 100px;
 
   input {
     width: 624px;
@@ -8,6 +9,7 @@
     border-radius: 20px;
     font-size: 28px;
     display: block;
+    padding-left: 20px;
 
     &::placeholder {
       color: #c7c7c7;

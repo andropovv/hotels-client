@@ -1,0 +1,31 @@
+.container {
+  margin-bottom: 10px;
+  height: 125px;
+  > label {
+    font-weight: 500;
+    font-size: 25px;
+    padding: 0 0 8px 0;
+    display: block;
+  }
+  .items {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    gap: 5px;
+    div {
+      padding: 2px;
+      font-size: 22px;
+
+      input {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    display: block;
+    margin: 0;
+  }
+}

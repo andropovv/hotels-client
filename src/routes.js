@@ -2,8 +2,8 @@ import { Navigate, Outlet } from "react-router-dom";
 import ProtectedRouteForAdmin from "./components/UI/ProtectedRouteForAdmin";
 import ProtectedRouteForLoggined from "./components/UI/ProtectedRouteForLoginned";
 import AboutPage from "./pages/AboutPage";
+import AdminPanel from "./pages/AdminPanelPage/AdminPanel";
 import BookingRoomPage from "./pages/BookingRoomPage";
-import EditRoomPage from "./pages/EditRoomPage";
 import LoginPage from "./pages/LoginPage";
 import MyBookingsPage from "./pages/MyBookingsPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -29,6 +29,10 @@ export const routesList = [
     element: <ProtectedRouteForLoggined component={MyBookingsPage} />,
   },
   {
+    path: "adminPanel",
+    element: <ProtectedRouteForAdmin component={AdminPanel} />,
+  },
+  {
     path: "roomTypes",
     element: <Outlet />,
     children: [
@@ -38,10 +42,7 @@ export const routesList = [
         element: <Outlet />,
         children: [
           { path: "booking", element: <BookingRoomPage /> },
-          {
-            path: "edit",
-            element: <ProtectedRouteForAdmin component={EditRoomPage} />,
-          },
+
           { index: true, element: <Navigate to="./booking" /> },
           { path: "*", element: <Navigate to="../booking" /> },
         ],
