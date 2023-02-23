@@ -5,7 +5,7 @@ import styles from "./Profile.module.scss";
 import * as yup from "yup";
 import BlueButton from "../UI/Buttons/BlueButton";
 import { useDispatch } from "react-redux";
-import { getMe, updateUser } from "../../store/slices/auth";
+import { getMe, removeUser, updateUser } from "../../store/slices/auth";
 import { useNavigate } from "react-router-dom";
 import CheckboxField from "../UI/Fields/CheckboxField";
 
@@ -43,7 +43,6 @@ const EditProfile = ({ onClick, user }) => {
   }, [userData]);
 
   const handleChange = (data) => {
-    console.log(data);
     setUserData((prevState) => ({ ...prevState, ...data }));
   };
 
@@ -61,6 +60,11 @@ const EditProfile = ({ onClick, user }) => {
 
   const handleCancel = () => {
     onClick();
+  };
+
+  const handleDelete = async () => {
+    await dispatch(removeUser());
+    navigate("/");
   };
 
   return (
@@ -104,16 +108,21 @@ const EditProfile = ({ onClick, user }) => {
           />
 
           <div className={styles.buttons}>
-            <BlueButton
-              onClick={handleSubmit}
-              type="submit"
-              disabled={!isValid}
-            >
-              Сохранить
-            </BlueButton>
-            <button className={styles.editBtn} onClick={handleCancel}>
-              {" "}
-              Назад
+            <div className={styles.buttonsLeft}>
+              <BlueButton
+                onClick={handleSubmit}
+                type="submit"
+                disabled={!isValid}
+              >
+                Сохранить
+              </BlueButton>
+              <button className={styles.editBtn} onClick={handleCancel}>
+                {" "}
+                Назад
+              </button>
+            </div>
+            <button className={styles.deleteBtn} onClick={handleDelete}>
+              Удалить аккаунт
             </button>
           </div>
         </div>

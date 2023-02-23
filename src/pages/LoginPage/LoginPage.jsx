@@ -14,6 +14,7 @@ import telegramIcon from "../../assets/svg/forLogin/telegram.svg";
 import vkIcon from "../../assets/svg/forLogin/vk.svg";
 import yandexIcon from "../../assets/svg/forLogin/yandex.svg";
 import Loader from "../../components/UI/Loader/Loader";
+import useDebounce from "../../hooks/useDebounce";
 
 const iconsSocial = [
   googleIcon,
@@ -53,8 +54,10 @@ const LoginPage = () => {
   };
   const isValid = Object.keys(errors).length === 0;
 
+  const debouncedValidate = useDebounce(validate, 500);
+
   useEffect(() => {
-    validate();
+    debouncedValidate();
   }, [loginData]);
 
   const handleChange = (data) => {

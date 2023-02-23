@@ -1,10 +1,9 @@
 import axios from "axios";
-import configFile from "../config.json";
 import authService from "./auth.service";
 import localStorageService from "./localStorage.service";
 
 const http = axios.create({
-  baseURL: configFile.apiEndpoint,
+  baseURL: process.env.REACT_APP_SERVER_URL,
 });
 
 http.interceptors.request.use(

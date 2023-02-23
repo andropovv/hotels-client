@@ -9,7 +9,6 @@ const SubscribeInput = () => {
   };
 
   const handleClick = () => {
-    console.log(value);
     setValue("");
   };
   return (

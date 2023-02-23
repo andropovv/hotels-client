@@ -11,7 +11,6 @@ const AdminPanel = () => {
 
   const sortedRooms = orderBy(rooms, ["roomNumber"], ["asc"]);
 
-  console.log(rooms);
   return (
     <>
       <Navbar />

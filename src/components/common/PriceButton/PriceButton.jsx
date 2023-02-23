@@ -25,7 +25,6 @@ const PriceButton = ({ onSubmit }) => {
     }
     if (target.name === "max") {
       setPrice((prevState) => [prevState[0], Number(target.value)]);
-      console.log(typeof price[1]);
     }
   };
 

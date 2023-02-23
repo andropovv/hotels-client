@@ -103,6 +103,16 @@ export const updateUser = (payload) => async (dispatch) => {
   }
 };
 
+export const removeUser = () => async (dispatch) => {
+  try {
+    dispatch(fetchCurrentUserPending());
+    await authService.remove();
+    dispatch(logOut());
+  } catch (error) {
+    dispatch(fetchCurrentUserFailure(error));
+  }
+};
+
 export const getIsLoggedIn = () => (state) => state.auth.isLoggedIn;
 export const getIsLoading = () => (state) => state.auth.isLoading;
 export const getUser = () => (state) => state.auth?.currentUser;

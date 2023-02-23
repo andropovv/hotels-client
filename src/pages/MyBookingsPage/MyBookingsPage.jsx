@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
 import MyBookingsItem from "../../components/common/MyBookings/MyBookingsItem";
 import Navbar from "../../components/common/Navbar";
 import Profile from "../../components/Profile/Profile";

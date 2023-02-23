@@ -78,6 +78,7 @@ export const getAllRooms = () => (state) => {
   return state.rooms.items;
 };
 export const getBooked = (roomType, userId) => (state) => {
+  if (userId === null) return false;
   return state.rooms.items.find(
     (i) => i.type === roomType && i.bookedBy === userId
   );

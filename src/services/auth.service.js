@@ -1,10 +1,9 @@
 import axios from "axios";
 import localStorageService from "./localStorage.service";
-import config from "../config.json";
 import httpService from "./http.service";
 
 const httpAuth = axios.create({
-  baseURL: config.apiEndpoint + "/auth",
+  baseURL: process.env.REACT_APP_SERVER_URL + "/auth",
 });
 
 const authService = {
@@ -32,6 +31,9 @@ const authService = {
   updateMe: async (payload) => {
     const { data } = await httpService.patch("auth/update", payload);
     return data;
+  },
+  remove: async () => {
+    await httpService.delete("/auth");
   },
 };
 export default authService;

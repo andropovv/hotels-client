@@ -16,7 +16,6 @@ const RoomsCarousel = () => {
     const childNodes = roomsRef.current.childNodes;
 
     position += width;
-    console.log(childNodes);
 
     if (position > 0) position = -(Math.floor(childNodes.length / 4) * width);
 
